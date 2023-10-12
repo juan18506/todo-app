@@ -10,6 +10,7 @@ const state = {
   todos: [
     new Todo('Piedra del alma'),
     new Todo('Piedra del infinito'),
+    new Todo('Piedra del Poder'),
   ],
   filter: Filters.All,
 }
