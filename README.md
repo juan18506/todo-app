@@ -1,4 +1,4 @@
-# To-Do app
+# Todo app
 
 It's a todo app created using HTML, CSS and JavaScript.
 
