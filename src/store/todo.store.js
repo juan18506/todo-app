@@ -7,7 +7,7 @@ const Filters = {
 }
 
 const state = {
-  todo: [
+  todos: [
     new Todo('Piedra del alma'),
     new Todo('Piedra del infinito'),
   ],
@@ -21,6 +21,22 @@ const initStore = () => {
 
 const loadStore = () => {
   throw new Error('Not implemented');
+}
+
+const getTodos = (filter = Filters.All) => {
+  switch (filter) {
+    case Filters.All:
+      return [...state.todos];
+
+    case Filters.Completed:
+      return state.todos.filter(todo => todo.done);
+
+    case Filters.Completed:
+      return state.todos.filter(todo => !todo.done);
+
+    default:
+      throw new Error(`Option ${filter} is not valid.`);
+  }
 }
 
 /**
@@ -62,6 +78,7 @@ const getCurrentFilter = () => {
 export default {
   initStore,
   loadStore,
+  getTodos,
   addTodo,
   toggleTodo,
   deleteTodo,
