@@ -23,6 +23,10 @@ const loadStore = () => {
   throw new Error('Not implemented');
 }
 
+/**
+ * 
+ * @param {Filters} newFilter 
+ */
 const getTodos = (filter = Filters.All) => {
   switch (filter) {
     case Filters.All:
@@ -62,19 +66,23 @@ const toggleTodo = (todoId) => {
  * @param {String} todoId 
  */
 const deleteTodo = (todoId) => {
-  throw new Error('Not implemented');
+  state.todos = state.todos.filter(todo => todo.id !== todoId);
 }
 
 const deleteCompleted = () => {
-  throw new Error('Not implemented');
+  state.todos = state.todos.filter(todo => todo.done);
 }
 
+/**
+ * 
+ * @param {Filters} newFilter 
+ */
 const setFilter = (newFilter = Filters.All) => {
-  throw new Error('Not implemented');
+  state.filter = newFilter;
 }
 
 const getCurrentFilter = () => {
-  throw new Error('Not implemented');
+  return state.filter;
 }
 
 export default {
