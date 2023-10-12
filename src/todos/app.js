@@ -1,24 +1,30 @@
 import todoStore, { Filters } from '../store/todo.store';
 import html from './app.html?raw';
-import { renderTodos } from './use-cases';
+import { renderPending, renderTodos } from './use-cases';
 
 const ElementIDs = {
   TodoList: '.todo-list',
   NewTodoInput: '#new-todo-input',
   ClearCompletedButton: '.clear-completed',
-  TodoFilters: '.filter'
+  TodoFilters: '.filter',
+  PendingCountLabel: '#pending-count',
 }
 
 /**
  * 
  * @param {String} elementId 
  */
-export const App = (elementId) => {
+export const App = (elementId) => {  
+  const updatePendingCount = () => {
+    renderPending(ElementIDs.PendingCountLabel);
+  }
 
   const displayTodos = () => {
     const todos = todoStore.getTodos(todoStore.getCurrentFilter());
     renderTodos(ElementIDs.TodoList, todos);
+    updatePendingCount();
   }
+
 
   (() =>  {
     const app = document.createElement('div');
@@ -82,6 +88,6 @@ export const App = (elementId) => {
       }
 
       displayTodos();
-    })
-  })
+    });
+  });
 }
