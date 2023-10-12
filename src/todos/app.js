@@ -45,4 +45,12 @@ export const App = (elementId) => {
     console.log(todoStore.getTodos());
     displayTodos();
   });
+
+  todoListUL.addEventListener('click', (event) => {
+    if (!event.target.classList.contains('destroy')) return;
+
+    const element = event.target.closest('[data-id]');
+    todoStore.deleteTodo(element.getAttribute('data-id'));
+    displayTodos();
+  });
 }
